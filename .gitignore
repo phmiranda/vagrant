@@ -1,0 +1,12 @@
+# configurações de editores de texto.
+.idea/
+nbproject/
+.vscode/
+
+# cache de deploy local das machines.
+centos/.vagrant
+debian/.vagrant
+ubuntu/.vagrant
+
+# comentários.
+*.log
