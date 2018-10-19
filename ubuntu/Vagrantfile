@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "ubuntu/xenial64"
     # comentários.
-    config.vm.define :vagrant do |vagrant|
+    config.vm.define :infra do |infra|
         
     end
 
@@ -73,6 +73,10 @@ Vagrant.configure("2") do |config|
   #   apt-get update
   #   apt-get install -y apache2
   # SHELL
-    # comentários.
+    # instalação do provisioner puppet via shellscript.
+    config.vm.provision "shell", path: "config/atualizacao.sh"
     config.vm.provision "shell", path: "config/puppet.sh"
+    infra.vm.provision "puppet" do |puppet|
+      puppet.manifest_file = "ubuntu.pp"
+    end
 end
