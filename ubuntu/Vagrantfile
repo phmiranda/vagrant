@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "ubuntu/xenial64"
     # comentários.
-    config.vm.define :infra do |infra|
+    config.vm.define :vagrant do |vagrant|
         
     end
 
@@ -49,7 +49,8 @@ Vagrant.configure("2") do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
-    config.vm.synced_folder "C:/Apache/", "/var/www/"
+  # config.vm.synced_folder "C:/Apache/", "/var/www/"
+    config.vm.synced_folder "D:/Sistemas/", "/var/www/"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -57,7 +58,8 @@ Vagrant.configure("2") do |config|
   #
   # config.vm.provider "virtualbox" do |vb|
   #   # Display the VirtualBox GUI when booting the machine
-  #   vb.gui = true
+  #   vb.gui = 
+  
   #
   #   # Customize the amount of memory on the VM:
   #   vb.memory = "1024"
@@ -76,7 +78,7 @@ Vagrant.configure("2") do |config|
     # instalação do provisioner puppet via shellscript.
     config.vm.provision "shell", path: "config/atualizacao.sh"
     config.vm.provision "shell", path: "config/puppet.sh"
-    infra.vm.provision "puppet" do |puppet|
-      puppet.manifest_file = "ubuntu.pp"
-    end
+    #config.vm.provision "puppet" do |puppet|
+    #  puppet.manifest_file = "ubuntu.pp"
+    #end
 end
